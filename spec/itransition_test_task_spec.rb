@@ -45,4 +45,32 @@ RSpec.describe ItransitionTestTask do
       end
     end
   end
+
+  describe "sort_by_binaries" do
+    subject { described_class.sort_by_binaries(input_array) }
+
+    context "when decimals sorted" do
+      let(:input_array) { [3, 7, 8, 9] }
+
+      it "returns correctly sorted array" do
+        expect(subject).to eq [8, 3, 9, 7]
+      end
+    end
+
+    context "when decimals reverse-sorted" do
+      let(:input_array) { [9, 8, 7, 3] }
+
+      it "returns correctly sorted array" do
+        expect(subject).to eq [8, 3, 9, 7]
+      end
+    end
+
+    context "when decimals shuffled" do
+      let(:input_array) { [8, 9, 3, 7] }
+
+      it "returns correctly sorted array" do
+        expect(subject).to eq [8, 3, 9, 7]
+      end
+    end
+  end
 end
